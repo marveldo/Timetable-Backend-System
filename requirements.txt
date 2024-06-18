@@ -10,7 +10,7 @@ inflection
 jsonschema
 jsonschema-specifications
 phonenumbers
-psycopg2
+psycopg2-binary
 PyJWT
 PyYAML
 referencing
