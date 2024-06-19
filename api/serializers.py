@@ -79,7 +79,7 @@ class AdminSerializer(serializers.ModelSerializer):
 
     class Meta :
         model = Admin
-        fields = ["first_name","last_name", "user_type", "SpecialId", "password"]
+        fields = ["id","first_name","last_name", "user_type", "SpecialId", "password"]
         extra_kwargs = {'*': {'allow_blank': True}}
 
 
@@ -154,7 +154,7 @@ class LecturerSerializer(serializers.ModelSerializer):
 
     class Meta :
         model = Lecturer
-        fields = ["first_name","last_name", "user_type", "SpecialId", "password","Teaching_faculty", "Teaching_department","lecturer_phonenumber", "lecturer_title"]
+        fields = ["id","first_name","last_name", "user_type", "SpecialId", "password","Teaching_faculty", "Teaching_department","lecturer_phonenumber", "lecturer_title"]
         extra_kwargs = {'*': {'allow_blank': True}}
 
 
