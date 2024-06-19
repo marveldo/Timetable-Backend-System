@@ -4,7 +4,7 @@ from .serializers import *
 from .models import *
 from rest_framework.response import Response
 from rest_framework import mixins
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework import permissions
 from .permissions import AdminTypePermission, AdminLecturerTypePermission, AdminLecturerClassrepType
 from rest_framework.views import APIView
@@ -19,6 +19,9 @@ from drf_spectacular.types import OpenApiTypes
 class LoginUser(TokenObtainPairView):
     renderer_classes = [renderers.JSONRenderer]
     serializer_class = CustomTokenSerializer
+
+class Refreshuser(TokenRefreshView):
+    renderer_classes = [renderers.JSONRenderer]
 
 class CreateAdmin(generics.CreateAPIView):
     queryset = Admin.objects.all()

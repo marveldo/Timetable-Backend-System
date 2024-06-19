@@ -4,6 +4,7 @@ from rest_framework.routers import DefaultRouter,APIRootView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.renderers import JSONRenderer
 
+
 class CustomApiRootview(APIRootView):
     renderer_classes = [JSONRenderer]
 
@@ -22,6 +23,7 @@ router.register('ExamAllocations', ExamAllocationViewset, "Examallocationsviewse
 urlpatterns = [
     path('create-admin/', CreateAdmin.as_view()),
     path('create-lecturer/', CreateLecturer.as_view()),
+    path('refresh/',Refreshuser.as_view()),
     path('create-student/',CreateStudent.as_view()),
     path('students/<str:SpecialId>/',GetStudent.as_view()),
     path('lecturers/', ListLecturers.as_view()),
