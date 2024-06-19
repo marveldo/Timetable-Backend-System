@@ -98,6 +98,7 @@ class GetStudent(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.Dest
 class ListLecturers(generics.ListAPIView):
     queryset = Lecturer.objects.all()
     serializer_class = LecturerSerializer
+    renderer_classes = [renderers.JSONRenderer]
     
 class GetLecturer(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
     queryset = Lecturer.objects.all()
@@ -231,6 +232,8 @@ class CreateAllocations(generics.CreateAPIView):
     queryset = CourseAllocation.objects.all()
     serializer_class = CourseAllocationSerializer
     permission_classes = [AdminLecturerClassrepType]
+    renderer_classes = [renderers.JSONRenderer]
+
 
 class ListAllocations(mixins.ListModelMixin, mixins.RetrieveModelMixin, generics.GenericAPIView):
 

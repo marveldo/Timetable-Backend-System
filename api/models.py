@@ -42,7 +42,7 @@ class UserManager(BaseUserManager):
         return self.create(SpecialId, password ,  **extra_fields)
     
 
-class Level(models.TextChoices):
+class Level(models.IntegerChoices):
     HUNDRED = 100
     TWO_HUNDRED = 200
     THREE_HUNDRED = 300
