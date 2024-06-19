@@ -235,7 +235,7 @@ class CreateAllocations(generics.CreateAPIView):
     renderer_classes = [renderers.JSONRenderer]
 
 
-class ListAllocations(mixins.ListModelMixin, mixins.RetrieveModelMixin, generics.GenericAPIView):
+class ListAllocations(mixins.ListModelMixin, generics.GenericAPIView):
 
     permission_classes = [permissions.IsAuthenticated]
 
@@ -249,14 +249,10 @@ class ListAllocations(mixins.ListModelMixin, mixins.RetrieveModelMixin, generics
             queryset = queryset.filter(level = self.request.GET.get('search'))
         return queryset
   
-    def get(self,request,pk=None):
+    def get(self,request):
+        return self.list(request)
         
-        if pk:
-            return self.retrieve(request, pk)
-        else :
-            return self.list(request)
-        
-class EditAllocations(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+class EditAllocations( mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
 
     queryset = CourseAllocation.objects.all()
     serializer_class = CourseAllocationSerializer
@@ -283,9 +279,7 @@ class EditAllocations(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins
         else:
              return Response("No declaration for pk value", status=status.HTTP_400_BAD_REQUEST)
             
-    
-    def post(self,request):
-        return self.create(request)
+
     
 class LectureRoomViewset(viewsets.ModelViewSet):
       queryset = LectureRoom.objects.all()
