@@ -178,6 +178,9 @@ class LectureRoom(models.Model):
 
     def __str__(self):
         return str(self.lecture_room)
+    
+
+
 
 
     
@@ -185,6 +188,7 @@ class CourseAllocation(models.Model):
     course = models.ForeignKey(Course, blank = True , null=True, on_delete=models.CASCADE)
     lecture_room = models.ForeignKey(LectureRoom, blank = True, null = True, on_delete=models.SET_NULL )
     level = models.IntegerField(blank = True, null = True, choices=Level.choices)
+    day = models.CharField(max_length=250, blank=True, null=True, choices=Day.choices)
     start_time = models.TimeField(blank = True, null = True)
     end_time = models.TimeField(blank = True, null = True)
 

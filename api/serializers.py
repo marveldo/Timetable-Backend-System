@@ -347,9 +347,15 @@ class CourseSerializer(serializers.ModelSerializer):
             )
         return super().is_valid(raise_exception=raise_exception)
     
+class LectureRoomSerializer(serializers.ModelSerializer):
+   
+    class Meta :
+        model = LectureRoom
+        fields = '__all__'
 
 class GetCourseAllocationSerializer(serializers.ModelSerializer):
     course = CourseSerializer()
+    lecture_room = LectureRoomSerializer()
     class Meta :
 
         model = CourseAllocation
@@ -374,11 +380,7 @@ class CourseAllocationSerializer(serializers.ModelSerializer):
             )
         return super().is_valid(raise_exception=raise_exception)
     
-class LectureRoomSerializer(serializers.ModelSerializer):
-   
-    class Meta :
-        model = LectureRoom
-        fields = '__all__'
+
 
 
 class ExamAllocationsSerializer(serializers.ModelSerializer):
