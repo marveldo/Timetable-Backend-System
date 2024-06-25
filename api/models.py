@@ -79,6 +79,8 @@ class Day(models.TextChoices):
 class Title(models.TextChoices):
     MR = 'Mr'
     MRS = 'Mrs'
+    DR = 'Dr'
+    PROFESSOR = 'professor'
 
 
 class User(AbstractBaseUser,PermissionsMixin):
